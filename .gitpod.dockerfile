@@ -1,7 +1,13 @@
 FROM gitpod/workspace-full-vnc
 
+USER gitpod
+
 RUN sudo apt-get update \
  && sudo apt-get install -y \
     chromium-browser \
  && sudo rm -rf /var/lib/apt/lists/*
- RUN pip install selenium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
+ENV BROWSER="Chrome_Without_Sandbox"
+
+RUN pip install selenium
